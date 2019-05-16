@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var num1 = Number(prompt("Enter delay time"));
+        var num2 = Number(prompt("Enter repeat number"));
+        var count = 1;
+
+        for (var i = 1; i <= num2; i++) {
+            setTimeout(
+                function func() {
+                    console.log(`Iteration number ${count++}`);
+                }, i * num1 * 1000
+            );
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

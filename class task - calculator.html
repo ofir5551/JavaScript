@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        button {
+            padding: 15px;
+            margin: 5px;
+        }
+
+        textarea {
+            display: block;
+        }
+        textarea#history {
+            width: 250px;
+            height: 250px;
+        }
+
+        textarea#txt {
+            width: 250px;
+        }
+
+        button:hover {
+            color: red;
+        }
+    </style>
+    <script>
+        var res, op;
+        var num1 = '', num2 = '', cnt = 0;
+        function clicked(input) {
+            switch (input) {
+                case '=':
+                    switch (op) {
+                        case 1:
+                            res = parseInt(num1) + parseInt(num2);
+                            break;
+                        case 2:
+                            res = parseInt(num1) - parseInt(num2);
+                            break;
+                        default:
+                            break;
+                    }
+                    console.log("res: " + res);
+
+                    // Writing to history box:
+                    if (op == 1)
+                        document.getElementById("history").innerHTML += num1 + " + " + num2 + " = " + res + "\n";
+                    else
+                        document.getElementById("history").innerHTML += num1 + " - " + num2 + " = " + res + "\n";
+                    document.getElementById("txt").innerHTML = "";
+                    num1 = '';
+                    num2 = '';
+                    cnt = 0;
+                    break;
+                case '+':
+                    op = 1; // +
+                    cnt++;
+                    document.getElementById("txt").innerHTML += " + ";
+                    break;
+                case '-':
+                    op = 2; // -
+                    cnt++;
+                    document.getElementById("txt").innerHTML += " - ";
+
+                    break;
+                default:
+                    if (cnt == 0) {
+                        num1 += String(input);
+                        document.getElementById("txt").innerHTML = num1;
+                    }
+                    else {
+                        num2 += String(input);
+                        document.getElementById("txt").innerHTML = num1 + (op == 1 ? " + " : " - ") + num2;
+                    }
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="clicked(1)">1</button>
+    <button onclick="clicked(2)">2</button>
+    <button onclick="clicked(3)">3</button>
+    <button onclick="clicked('=')">=</button>
+    <br>
+    <button onclick="clicked(4)">4</button>
+    <button onclick="clicked(5)">5</button>
+    <button onclick="clicked(6)">6</button>
+    <button onclick="clicked('+')">+</button>
+    <br>
+    <button onclick="clicked(7)">7</button>
+    <button onclick="clicked(8)">8</button>
+    <button onclick="clicked(9)">9</button>
+    <button onclick="clicked('-')">-</button>
+
+    <textarea id="txt"></textarea>
+    <label style="font-size:35px; ">History</label>
+    <textarea id="history"></textarea>
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var btn1 = 0;
+        var btn2 = 0;
+
+        function clicked(btn) {
+            if (btn == "btn1")
+                btn1++;
+            else
+                btn2++;
+
+            alert(btn + ' was clicked');
+            console.log(`Button 1 was clicked ${btn1} times\nButton 2 was clicked ${btn2} times`);
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="clicked('btn1')">Button 1</button>
+    <button onclick="clicked('btn2')">Button 2</button>
+</body>
+
+</html>

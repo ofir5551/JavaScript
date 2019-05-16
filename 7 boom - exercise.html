@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        var count = 1;
+
+        for (var i = 1; i <= 100; i++) {
+            setTimeout(
+                function func() {
+                    if (count % 7 == 0) {
+                        console.log(`boom`);
+                        count++;
+                    }
+                    else {
+                        console.log(count);
+                        count++;
+                    }
+                }, i * count * 1000
+            );
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
